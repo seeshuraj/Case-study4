@@ -100,7 +100,7 @@ Make sure you have `numpy` and `matplotlib` installed.
 python3 mg_solver.py
 ```
 
-To run benchmarks and save results:
+To not run benchmarks and save results:
 
 ```python
 # Inside mg_solver.py
