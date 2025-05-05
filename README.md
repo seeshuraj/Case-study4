@@ -1,29 +1,17 @@
+# Multigrid Solver for 2D Poisson Equation
 
-# 🧮 Case Study 4: Multigrid Solver for 2D Poisson Problem
-
-This project implements a Multigrid (MG) solver in Python to efficiently solve the 2D Poisson equation using a 5-point finite difference stencil. The solver is tested across varying grid sizes and both 2-level and multi-level configurations.
-
----
-
-## 📌 Objective
-
-To evaluate the convergence performance and computational efficiency of a recursive V-cycle multigrid solver by:
-- Constructing Laplacian matrices using finite difference discretization.
-- Implementing smoothing, restriction, and prolongation operations.
-- Running benchmark comparisons across multiple grid sizes.
-- Saving convergence history and residuals for analysis.
+This project implements a **Multigrid (MG) method** to solve the 2D Poisson equation using a recursive V-cycle with weighted Jacobi smoothing. The convergence behavior is visualized and benchmarked across different grid sizes.
 
 ---
 
-## ⚙️ Features
+## 🔧 Features
 
-- ✅ Weighted Jacobi smoother  
-- ✅ Full-weighting restriction  
-- ✅ Bilinear interpolation (prolongation)  
-- ✅ Recursive V-cycle implementation  
-- ✅ Convergence monitoring and residual norm plotting  
-- ✅ Benchmarking with performance CSV output  
-- ✅ Auto-generated `mg_convergence.png` plot
+- V-cycle multigrid implementation with adjustable levels
+- Weighted Jacobi smoother
+- Full-weighting restriction and bilinear prolongation
+- Convergence plots and benchmark comparisons
+- CSV output of cycles, residuals, and timings
+- Ready-to-run and extensible Python code
 
 ---
 
@@ -31,95 +19,56 @@ To evaluate the convergence performance and computational efficiency of a recurs
 
 | File | Description |
 |------|-------------|
-| `mg_solver.py` | Main Python script containing full multigrid logic and benchmarking |
-| `mg_convergence.png` | Plot of residual norm vs cycle (auto-generated) |
-| `mg_comparison_results.csv` | Benchmark results comparing 2-level and max-level MG |
-| `CaseStudy4(2).pdf` | Provided assignment prompt |
+| `mg_solver.py` | Main Python script to run the multigrid solver |
+| `mg_convergence.png` | Log plot showing convergence over V-cycles |
+| `mg_comparison_results.csv` | Benchmark results for various grid sizes |
+| `multigrid_assignment_report.md` | Detailed write-up and explanation |
+| `requirements.txt` | Required Python packages |
 
 ---
 
-## 🔢 Grid Sizes Tested
+## ▶️ How to Run
 
-Grids tested with both **2-level** and **max-level** MG:
-- `N = 16`
-- `N = 32`
-- `N = 64`
-- `N = 128`
-- `N = 256`
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Run the solver:
+   ```bash
+   python3 mg_solver.py
+   ```
+
+   It will output residuals per cycle and generate `mg_convergence.png`.
+
+---
+
+## 🧪 Benchmarking
+
+The script runs V-cycle multigrid for various grid sizes (`N = 16, 32, 64, 128, 256`) using:
+- 2-Level MG
+- Max-level MG (deepest possible)
+
+Results are saved in:
+```
+mg_comparison_results.csv
+```
 
 ---
 
 ## 📊 Sample Output
 
-```
-Running for N = 64 with 2-level MG...
-Cycle 1: Residual = 6.45e+02
-...
-Cycle 30: Residual = 6.51e-08
-Converged.
-Total time: 0.10 sec, Cycles: 30
-```
-
-For full logs, see terminal output or generated CSV file.
+![Convergence Plot](mg_convergence.png)
 
 ---
 
-## 📈 Convergence Plot
+## 📄 Report
 
-![Multigrid Convergence](mg_convergence.png)
-
+See `multigrid_assignment_report.md` for the full write-up.
 ---
 
-## 📑 Benchmark Summary
+## 👤 Author
 
-| N    | 2-Level Cycles | Time (s) | Converged | Max-Level Cycles | Time (s) | Converged |
-|------|----------------|----------|-----------|------------------|----------|-----------|
-| 16   | 26             | 0.01     | ✅         | 26               | 0.01     | ✅         |
-| 32   | 29             | 0.03     | ✅         | 50               | 0.04     | ❌         |
-| 64   | 30             | 0.10     | ✅         | 50               | 0.12     | ❌         |
-| 128  | 31             | 0.75     | ✅         | 50               | 0.93     | ❌         |
-| 256  | 32             | 2.73     | ✅         | 50               | 3.47     | ❌         |
-
-> ✅ = Converged within tolerance, ❌ = Not converged in 50 cycles
+**Seeshuraj Bhoopalan**
 
 ---
-
-## 📌 Key Observations
-
-- 2-level MG consistently converges across all grid sizes.
-- Max-level MG struggles to converge on larger grids.
-- 2-level configuration is faster and more robust under current implementation.
-
----
-
-## 📥 How to Run
-
-Make sure you have `numpy` and `matplotlib` installed.
-
-```bash
-python3 mg_solver.py
-```
-
-To not run benchmarks and save results:
-
-```python
-# Inside mg_solver.py
-# comment this at the bottom:
-benchmark_mg_convergence()
-```
-
----
-
-## 📚 Learning Reflection
-
-Through this assignment, I understood how multigrid methods leverage coarse-grid correction to accelerate convergence. Implementing the recursive V-cycle helped solidify concepts like restriction, interpolation, and smoothers. I also realized the importance of tuning levels for balancing performance and accuracy.
-
----
-
-## 🔗 Author
-
-**Name:** Seeshuraj Bhoopalan  
-**University:** Trinity College Dublin 
-**Degree:** M.Sc. High Performance Computing
-**Coursework:** Case Study 4 – Multigrid Poisson Solver  
-**Date:** May 2025  
