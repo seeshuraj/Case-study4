@@ -1,10 +1,10 @@
 # Multigrid Solver for 2D Poisson Equation
 
-This project implements a **Multigrid (MG) method** to solve the 2D Poisson equation using a recursive V-cycle with weighted Jacobi smoothing. The convergence behavior is visualized and benchmarked across different grid sizes.
+This Case study implements a **Multigrid (MG) method** to solve the 2D Poisson equation using a recursive V-cycle with weighted Jacobi smoothing. The convergence behavior is visualized and benchmarked across different grid sizes.
 
 ---
 
-## 🔧 Features
+## Features
 
 - V-cycle multigrid implementation with adjustable levels
 - Weighted Jacobi smoother
@@ -15,7 +15,7 @@ This project implements a **Multigrid (MG) method** to solve the 2D Poisson equa
 
 ---
 
-## 📁 Files
+## Files
 
 | File | Description |
 |------|-------------|
@@ -43,7 +43,7 @@ This project implements a **Multigrid (MG) method** to solve the 2D Poisson equa
 
 ---
 
-## 🧪 Benchmarking
+## Benchmarking
 
 The script runs V-cycle multigrid for various grid sizes (`N = 16, 32, 64, 128, 256`) using:
 - 2-Level MG
@@ -56,18 +56,18 @@ mg_comparison_results.csv
 
 ---
 
-## 📊 Sample Output
+## Sample Output
 
 ![Convergence Plot](mg_convergence.png)
 
 ---
 
-## 📄 Report
+## Report
 
 See `multigrid_assignment_report.md` for the full write-up.
 ---
 
-## 👤 Author
+## Author
 
 **Seeshuraj Bhoopalan**
 
