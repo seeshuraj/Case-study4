@@ -1,9 +1,9 @@
 
-# 🧮 Multigrid Solver for 2D Poisson Equation
+# Multigrid Solver for 2D Poisson Equation
 
-## ✅ Problem Description
+## Problem Description
 
-This assignment implements and benchmarks a **Multigrid V-cycle solver** for the 2D Poisson equation with Dirichlet boundary conditions on the unit square. It includes:
+This Case study implements and benchmarks a **Multigrid V-cycle solver** for the 2D Poisson equation with Dirichlet boundary conditions on the unit square. It includes:
 
 - 5-point stencil Laplacian matrix
 - Weighted Jacobi smoothing
@@ -13,19 +13,19 @@ This assignment implements and benchmarks a **Multigrid V-cycle solver** for the
 
 ---
 
-## ✅ Solver Performance Plot
+## Solver Performance Plot
 
 ![Multigrid Convergence](mg_convergence.png)
 
-This figure shows convergence for `N = 128` with `lmax = 3`. The residual norm drops exponentially with each V-cycle, demonstrating the solver's efficiency.
+This figure shows the convergence for `N = 128` with `lmax = 3`. The residual norm drops exponentially with each V-cycle, demonstrating the solver's efficiency.
 
 ---
 
-## ✅ Benchmark Results Summary and Observations
+## Benchmark Results Summary and Observations
 
-### 📊 Multigrid Benchmark Summary
+### Multigrid Benchmark Summary
 
-The solver was benchmarked across increasing grid sizes `N = [16, 32, 64, 128, 256]`, comparing two configurations:
+The solver was benchmarked across all increasing grid sizes `N = [16, 32, 64, 128, 256]`, comparing two configurations:
 
 - **2-Level Multigrid (lmax = 1)**  
 - **Max-Level Multigrid (lmax = log₂(N/8))**
@@ -40,29 +40,29 @@ The solver was benchmarked across increasing grid sizes `N = [16, 32, 64, 128, 2
 
 ---
 
-### 📌 Key Observations
+###  Key Observations
 
-1. ✅ **2-Level MG performs better** as `N` increases:
+1.  **2-Level MG performs better** as `N` increases:
    - It consistently **converges faster** (fewer cycles).
    - Achieves **lower residuals** for the same tolerance.
 
-2. 📉 **Max-Level MG underperforms for large `N`**:
+2.  **Max-Level MG underperforms for large `N`**:
    - At `N = 256`, the final residual is ~191 compared to just `5e-8` for 2-level.
    - Suggests **overhead from many levels** reduces effectiveness without aggressive smoothing or coarse correction.
 
-3. 💡 **Time vs. Accuracy Trade-off**:
+3.  **Time vs. Accuracy Trade-off**:
    - 2-Level MG is **more efficient** in practice for the given smoothing strategy.
    - While more levels might help with memory, they may hurt convergence unless tuned properly.
 
-4. 🧠 **Residuals drop exponentially** in successful cases:
+4.  **Residuals drop exponentially** in successful cases:
    - Verified visually via the `mg_convergence.png` plot.
    - Indicates textbook multigrid convergence behavior.
 
 ---
 
-## ✅ Learning Reflection
+## Learning Reflection
 
-> Through this assignment, I gained a deep, hands-on understanding of the **multigrid method** and why it is one of the most efficient solvers for elliptic PDEs like the Poisson equation.  
+> Through this case study, I gained a deep, hands-on understanding of the **multigrid method** and why it is one of the most efficient solvers for elliptic PDEs like the Poisson equation.  
 > 
 > Initially, I underestimated the implementation complexity — especially how important **restriction, prolongation**, and **smoothing** were for performance. I realized that just adding more levels does not guarantee faster convergence.  
 > 
