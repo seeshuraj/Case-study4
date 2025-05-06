@@ -27,7 +27,7 @@ This Case study implements a **Multigrid (MG) method** to solve the 2D Poisson e
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 1. Install dependencies:
    ```bash
